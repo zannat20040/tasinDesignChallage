@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto p-5">
+      <div class="text-center mb-14">
+        <h1 class="text-3xl mb-2 text-green-600 font-extrabold">Checkout form</h1>
+        <p class="text-gray-600">
+          Each required form group has a validation state that can be triggered
+          by attempting to submit the form without completing it.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Left Side -->
+        <div>
+          <h2 class="text-xl mb-4 font-medium">Billing Details</h2>
+          <form class="space-y-2">
+            <!-- name -->
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 md:gap-5 gap-2 justify-between"
+            >
+              <div>
+                <label
+                  class="block mb-2 text-sm text-gray-700 font-medium"
+                  for="firstname"
+                  >First Name</label
+                >
+                <input
+                  required
+                  type="text"
+                  id="firstname"
+                  class="py-[10px] rounded w-full border border-gray-300 outline:0 focus:outline-none px-4 text-sm"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block mb-2 text-sm text-gray-700 font-medium"
+                  for="lastname"
+                  >Last Name</label
+                >
+                <input
+                  required
+                  type="text"
+                  id="lastname"
+                  class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+                />
+              </div>
+            </div>
+
+            <!-- username -->
+            <div>
+              <label
+                class="block mb-2 text-sm text-gray-700 font-medium"
+                for="username"
+                >Username</label
+              >
+              <div
+                class="border-gray-300 bg-white rounded w-full border outline:0 focus:outline-none text-sm flex"
+              >
+                <p class="w-10 text-center text-xl bg-gray-200 py-[5px]">@</p>
+                <input
+                  required
+                  type="text"
+                  id="username"
+                  class="py-[4px] rounded w-full outline:0 focus:outline-none text-sm px-4"
+                  placeholder="Username"
+                />
+              </div>
+            </div>
+
+            <!-- email -->
+            <div>
+              <label
+                class="block mb-2 text-sm text-gray-700 font-medium"
+                for="email"
+                >Email (Optional)</label
+              >
+              <input
+                placeholder="you@example.com"
+                type="email"
+                id="email"
+                class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+              />
+            </div>
+
+            <!-- address -->
+            <div>
+              <label
+                class="block mb-2 text-sm text-gray-700 font-medium"
+                for="address"
+                >Address</label
+              >
+              <input
+                required
+                placeholder="1234 Main St"
+                type="text"
+                id="address"
+                class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+              />
+            </div>
+
+            <!-- address 2 -->
+            <div>
+              <label
+                class="block mb-2 text-sm text-gray-700 font-medium"
+                for="address2"
+                >Address 2</label
+              >
+              <input
+                placeholder="Apartment or suite"
+                type="text"
+                id="address2"
+                class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+              />
+            </div>
+
+            <!-- country, state,zip -->
+            <div
+              class="grid grid-cols-1 md:grid-cols-3 gap-2 justify-between items-start !mb-10"
+            >
+              <!-- <div>
+                <label
+                  class="block mb-2 text-sm text-gray-700 font-medium"
+                  for="country"
+                  >Country</label
+                >
+
+                <select
+                  required
+                  id="country"
+                  class="w-full p-2 border border-gray-300 rounded-md outline-none"
+                >
+                  <option value="" disabled selected>Choose...</option>
+                  <option value="US">United States</option>
+                  <option value="BD">Bangladesh</option>
+                  <option value="CA">Canada</option>
+                  <option value="IN">India</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="CN">China</option>
+                  <option value="NL">Netherlands</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block mb-1 text-gray-700 font-medium" for="state"
+                  >State</label
+                >
+                <select
+                  required
+                  id="state"
+                  class="w-full p-2 border border-gray-300 rounded-md outline-none"
+                >
+                  <option>Choose...</option>
+                  <option>California</option>
+                </select>
+              </div> -->
+
+              <div>
+                <label
+                  class="block mb-1 text-gray-700 font-medium"
+                  for="country"
+                  >Country</label
+                >
+                <select
+                  required
+                  id="country"
+                  class="w-full p-2 border border-gray-300 rounded-md outline-none"
+                  onchange="changeStates()"
+                >
+                  <option value="" disabled selected>Choose...</option>
+                  <option value="US">United States</option>
+                  <option value="BD">Bangladesh</option>
+                  <option value="CA">Canada</option>
+                  <option value="IN">India</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="CN">China</option>
+                  <option value="NL">Netherlands</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block mb-1 text-gray-700 font-medium" for="state"
+                  >State</label
+                >
+                <select
+                  required
+                  id="state"
+                  class="w-full p-2 border border-gray-300 rounded-md outline-none"
+                >
+                  <option value="" disabled selected>Choose...</option>
+                </select>
+              </div>
+
+              <div>
+                <label
+                  class="block mb-2 text-sm text-gray-700 font-medium"
+                  for="zip"
+                  >Zip</label
+                >
+                <input
+                  required
+                  type="number"
+                  id="zip"
+                  class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+                />
+              </div>
+            </div>
+
+            <!-- checkbox -->
+            <div class="flex flex-col gap-1 border-gray-300 border-y py-8">
+                <div class="flex items-center">
+                  <input
+                    checked
+                    type="checkbox"
+                    class="checkbox checkbox-xs rounded "
+                    id="check1"
+                  />
+                  <label
+                    for="check1"
+                    class="ml-2 text-sm text-gray-600"
+                    >Shipping address is the same as my billing address</label
+                  >
+                </div>
+                <div class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="checkbox checkbox-xs rounded"
+                    id="check2"
+                  />
+                  <label
+                    for="check2"
+                    class="ml-2 text-sm text-gray-600"
+                    >Save this information for next time</label
+                  >
+                </div>
+              </div>
+              
+
+            <!-- radio -->
+            <fieldset class="">
+              <legend class="text-2xl font-medium text-gray-700 mb-4">
+                Payment
+              </legend>
+              <div class="form-control">
+                <label
+                  class="label cursor-pointer justify-start gap-x-3 items-center"
+                >
+                  <input
+                    type="radio"
+                    name="radio-10"
+                    class="radio radio-sm checked:bg-black"
+                    checked="checked"
+                  />
+                  <span class="label-text">Credit Card</span>
+                </label>
+              </div>
+              <div class="form-control">
+                <label
+                  class="label cursor-pointer justify-start gap-x-3 items-center"
+                >
+                  <input
+                    type="radio"
+                    name="radio-10"
+                    class="radio radio-sm checked:bg-black"
+                  />
+                  <span class="label-text">Debit Card</span>
+                </label>
+              </div>
+              <div class="form-control">
+                <label
+                  class="label cursor-pointer justify-start gap-x-3 items-center"
+                >
+                  <input
+                    type="radio"
+                    name="radio-10"
+                    class="radio radio-sm checked:bg-black"
+                  />
+                  <span class="label-text">Paypal</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- card name -->
+            <!-- card number -->
+
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-5 justify-between items-start !mt-4"
+            >
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  for="cardname"
+                  >Name on card</label
+                >
+
+                <input
+                  required
+                  type="text"
+                  id="cardname"
+                  class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+                />
+                <span class="label-text-alt text-gray-600"
+                  >Full name as displayed on card</span
+                >
+              </div>
+
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  for="card-number"
+                  >Credit Card Number</label
+                >
+                <input
+                  required
+                  type="number"
+                  id="card-number"
+                  class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+                />
+              </div>
+            </div>
+
+            <!-- cvv , expiration -->
+            <div class="grid grid-cols-2 gap-4 !mt-4 md:w-2/3 w-full">
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  for="expiration"
+                  >Expiration</label
+                >
+                <input
+                  required
+                  type="number"
+                  id="expiration"
+                  class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 mb-2"
+                  for="cvv"
+                  >CVV</label
+                >
+                <input
+                  required
+                  type="number"
+                  id="cvv"
+                  class="border-gray-300 py-[10px] rounded w-full border outline:0 focus:outline-none px-4 text-sm"
+                />
+              </div>
+            </div>
+
+            <hr class="!mt-7 !mb-4" />
+            <button
+              class="btn w-full py-1 px-4 text-sm font-light text-white hover:bg-gray-600 bg-green-600 rounded"
+            >
+              Continue to Checkout
+            </button>
+          </form>
+        </div>
+
+        <!-- Right Side -->
+        <div>
+          <div class="flex justify-between items-center">
+            <h2 class="text-xl mb-4">Your Cart</h2>
+            <p
+              class="rounded-xl px-3 py-[2px] bg-green-600 text-white w-fit flex justify-center items-center text-sm"
+            >
+              3
+            </p>
+          </div>
+          <div class="space-y-2 bg-white mt-3 rounded border border-gray-200">
+            <div
+              class="flex justify-between items-start p-5 py-3 border-b hover:bg-gray-200 duration-200"
+            >
+              <div>
+                <h2 class="">Product Name</h2>
+                <p class="text-xs text-gray-600">Brief description</p>
+              </div>
+              <p class="text-gray-500">$12</p>
+            </div>
+
+            <div
+              class="flex justify-between items-start p-5 py-3 border-b !mt-0 hover:bg-gray-200 duration-200"
+            >
+              <div>
+                <h2 class="">Second Product</h2>
+                <p class="text-xs text-gray-600">Brief description</p>
+              </div>
+              <p class="text-gray-500">$8</p>
+            </div>
+
+            <div
+              class="flex justify-between items-start p-5 py-3 border-b !mt-0 hover:bg-gray-200 duration-200"
+            >
+              <div>
+                <h2 class="">Third item</h2>
+                <p class="text-xs text-gray-600">Brief description</p>
+              </div>
+              <p class="text-gray-500">$5</p>
+            </div>
+
+            <div
+              class="flex justify-between items-start p-5 py-3 border-b !mt-0 bg-gray-200 hover:bg-gray-200 duration-200"
+            >
+              <div>
+                <h2 class="text-green-500">PROMO CODE</h2>
+                <p class="text-sm text-green-500">EXAMPLECODE</p>
+              </div>
+              <p class="text-green-500">-$5</p>
+            </div>
+            <div
+              class="flex justify-between items-start p-5 py-3 border-b !mt-0 hover:bg-gray-200 duration-200"
+            >
+              <div>
+                <h2 class="">Total (USD)</h2>
+              </div>
+              <p class="text-gray-500 font-bold">$20</p>
+            </div>
+          </div>
+
+          <div class="mt-6 !bg-white !p-3 rounded border">
+            <div class="flex">
+              <input
+                type="text"
+                id="promo"
+                class="flex-grow p-2 border border-gray-300 rounded-s outline-none px-4"
+                placeholder="Promo Code"
+              />
+              <button
+                class="px-4 py-2 bg-green-600 text-white hover:bg-gray-600 rounded-e"
+              >
+                Redeem
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="text-gray-700 p-4 mt-20 lg:w-1/4 sm:w-2/4 w-full justify-center flex flex-col items-center mx-auto"
+      >
+        <p class="text-sm text-gray-500 text-center">
+          &copy; 2017-2018 Company name
+        </p>
+        <ul class="text-sm flex justify-between gap-4">
+          <li class="mb-1">
+            <a href="#" class="text-blue-600 hover:underline">Privacy</a>
+          </li>
+          <li class="mb-1">
+            <a href="#" class="text-blue-600 hover:underline">Terms</a>
+          </li>
+          <li class="mb-1">
+            <a href="#" class="text-blue-600 hover:underline">Support</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
